@@ -22,13 +22,15 @@ jobs:
           brew style stid/tap
           brew audit --tap stid/tap --strict --online
 
-      - name: The command
-        run: |
-          brew install stid/tap/stidcart
-          brew test stid/tap/stidcart
-          stidcart --version
+      # The setup action trusts the whole tap. Someone installing for the first time has not, so
+      # the installs start from there and name each recipe in full, as the README does.
+      - name: Start untrusted
+        run: brew untrust --tap stid/tap
 
-      - name: The app
+      # The cask asks for the formula, so this one install has to bring the command too.
+      - name: The app, and the command with it
         run: |
           brew install --cask stid/tap/stidcart-app
           spctl -a -vv /Applications/stidcart.app
+          stidcart --version
+          brew test stid/tap/stidcart
