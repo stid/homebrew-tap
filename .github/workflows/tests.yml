@@ -1,0 +1,34 @@
+# Checks the recipes and installs both on a Mac that has never had stidcart on it.
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    runs-on: macos-latest
+    steps:
+      # Sets up Homebrew and links this checkout in as the tap stid/tap.
+      - uses: Homebrew/actions/setup-homebrew@main
+
+      - name: Style and audit
+        run: |
+          brew style stid/tap
+          brew audit --tap stid/tap --strict --online
+
+      - name: The command
+        run: |
+          brew install stid/tap/stidcart
+          brew test stid/tap/stidcart
+          stidcart --version
+
+      - name: The app
+        run: |
+          brew install --cask stid/tap/stidcart-app
+          spctl -a -vv /Applications/stidcart.app
