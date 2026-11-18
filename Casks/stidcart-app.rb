@@ -12,7 +12,6 @@ cask "stidcart-app" do
     strategy :github_latest
   end
 
-  depends_on formula: "stid/tap/stidcart"
   depends_on :macos
 
   app "stidcart.app"

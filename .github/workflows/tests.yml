@@ -15,7 +15,7 @@ jobs:
     runs-on: macos-latest
     steps:
       # Sets up Homebrew and links this checkout in as the tap stid/tap.
-      - uses: Homebrew/actions/setup-homebrew@main
+      - uses: Homebrew/actions/setup-homebrew@ceec4e8419bb3c97ce96e9dda7738499ed5f869d # main, 2026-11-17
 
       - name: Style and audit
         run: |
@@ -27,10 +27,13 @@ jobs:
       - name: Start untrusted
         run: brew untrust --tap stid/tap
 
-      # The cask asks for the formula, so this one install has to bring the command too.
-      - name: The app, and the command with it
+      - name: The command
+        run: |
+          brew install stid/tap/stidcart
+          brew test stid/tap/stidcart
+          stidcart --version
+
+      - name: The app
         run: |
           brew install --cask stid/tap/stidcart-app
           spctl -a -vv /Applications/stidcart.app
-          stidcart --version
-          brew test stid/tap/stidcart
