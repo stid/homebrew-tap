@@ -1,6 +1,6 @@
 cask "stidcart-app" do
-  version "0.31.1"
-  sha256 "ba612776057ce90d3979c7330219ecf71150e082156eb9651c2f7b0f1c417481"
+  version "0.32.0"
+  sha256 "89e7d91ef3090f86106112fbba787d3ce123acca7fd2c613ba054cfa7271a6e7"
 
   url "https://github.com/stid/stidcart/releases/download/v#{version}/stidcart-#{version}-macos-universal.dmg"
   name "stidcart"
