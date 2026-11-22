@@ -1,8 +1,8 @@
 class Stidcart < Formula
   desc "Build, list and edit EasyFlash cartridge images for the Commodore 64"
   homepage "https://github.com/stid/stidcart"
-  url "https://github.com/stid/stidcart/releases/download/v0.32.0/stidcart-cli-0.32.0-macos-universal.tar.gz"
-  sha256 "800ab81c1c1c7df62650fd5be30210dffed6f645a8838ff3673ff69f2c512173"
+  url "https://github.com/stid/stidcart/releases/download/v0.32.1/stidcart-cli-0.32.1-macos-universal.tar.gz"
+  sha256 "ab0c693a589d172a339dcf181367401e59a5924c6c3285cf60aa612a3958f831"
   license all_of: ["GPL-2.0-or-later", "Zlib"]
 
   livecheck do
